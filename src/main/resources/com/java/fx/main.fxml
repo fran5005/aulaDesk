@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorPane" prefHeight="624.0" prefWidth="612.0" style="-fx-background-image: url('/images/fondoLogin.png'); " xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.alcoleagarridofran.auladeskv3.controller.CONTROLLER">
+    <children>
+        <ImageView fx:id="imageFondo" fitHeight="624.0" fitWidth="628.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../images/fondoLogin.png" />
+            </image>
+        </ImageView>
+        <VBox fx:id="tableVertical" layoutX="150.0" layoutY="356.0" prefHeight="230.0" prefWidth="331.0" style="-fx-background-color: whitesmoke; -fx-border-color: black; -fx-spacing: 10; -fx-border-radius: 10; -fx-padding: 10; -fx-alignment: center;">
+            <children>
+                <Label fx:id="userLabel" alignment="CENTER" prefHeight="33.0" prefWidth="151.0" text="Usuario" textAlignment="CENTER" textFill="#ffa600">
+                    <font>
+                        <Font name="Cascadia Mono Regular" size="26.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="textUser" prefHeight="31.0" prefWidth="242.0" promptText="👤Usuario" style="-fx-font: usuario;">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </TextField>
+                <Label fx:id="labelPass" alignment="CENTER" prefHeight="25.0" prefWidth="145.0" text="Contraseña" textFill="#ffa600">
+                    <font>
+                        <Font name="Cascadia Mono Regular" size="24.0" />
+                    </font>
+                </Label>
+                <PasswordField fx:id="textPass"  prefHeight="25.0" prefWidth="151.0" promptText="🔒Contraseña">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </PasswordField>
+                <Button fx:id="buttonLogin" alignment="CENTER" mnemonicParsing="false" onAction="#pulsaBotonLogin" prefHeight="25.0" prefWidth="151.0" style="-fx-background-color: green; -fx-text-fill: white; -fx-font-weight: bold; -fx-effect: dropshadow(gaussian, rgba(41,121,255,0.5), 8, 0, 0, 2);" text="Iniciar Sesión" />
+            </children>
+        </VBox>
+        <ImageView fx:id="imageApp" fitHeight="342.0" fitWidth="346.0" layoutX="143.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../images/logoAulaDesk.png" />
+            </image>
+        </ImageView>
+    </children>
+</AnchorPane>
