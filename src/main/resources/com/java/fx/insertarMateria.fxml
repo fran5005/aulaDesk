@@ -22,7 +22,7 @@
             </Label>
             <VBox layoutX="170.0" layoutY="125.0" prefHeight="119.0" prefWidth="153.0" style="-fx-padding: 10; -fx-spacing: 2;">
                <children>
-                  <Label prefHeight="17.0" prefWidth="73.0" text="ID_Profesor" />
+                  <Label prefHeight="17.0" prefWidth="73.0" text="ID_MATERIA" />
                   <TextField fx:id="textID" prefHeight="26.0" prefWidth="93.0" promptText="Id" />
                   <Label text="NOMBRE" />
                   <TextField fx:id="textNombre" prefHeight="26.0" prefWidth="83.0" promptText="Nombre" />

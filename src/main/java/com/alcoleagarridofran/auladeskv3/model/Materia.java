@@ -85,7 +85,7 @@ public class Materia implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.mavenproject4.asdasd.Materia[ idMateria=" + idMateria + " ]";
+        return "DATOS MATERIA: ID: " + idMateria + ", NOMBRE: " + nombre;
     }
 
 }

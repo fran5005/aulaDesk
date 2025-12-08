@@ -70,6 +70,7 @@ public class ProfesorService {
     public void eliminarProfesor(Integer id) {
 
         profesorRepository.deleteById(id);
+
     }
 }
 
