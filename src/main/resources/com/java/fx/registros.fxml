@@ -14,13 +14,14 @@
             <Image url="@../../../images/logoAulaDesk.png" />
          </image>
       </ImageView>
-      <Button fx:id="textProfesor"   onAction="#pulsarBotonProfesor" layoutX="146.0" layoutY="148.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="97.0" text="Profesores" />
-      <Button fx:id="textAlumno"  onAction="#pulsarBotonAlumno" layoutX="354.0" layoutY="148.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="97.0" text="Alumnos" />
+      <Button fx:id="textProfesor" layoutX="146.0" layoutY="148.0" mnemonicParsing="false" onAction="#pulsarBotonProfesor" prefHeight="41.0" prefWidth="97.0" text="Profesores" />
+      <Button fx:id="textAlumno" layoutX="354.0" layoutY="148.0" mnemonicParsing="false" onAction="#pulsarBotonAlumno" prefHeight="41.0" prefWidth="97.0" text="Alumnos" />
       <Label alignment="CENTER" layoutX="137.0" layoutY="14.0" prefHeight="48.0" prefWidth="333.0" text="BIENVENIDO" textFill="#ffbd00">
          <font>
             <Font name="Constantia" size="32.0" />
          </font>
       </Label>
-      <Button fx:id="textInicio" layoutX="470.0" layoutY="331.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="97.0" />
+      <Button fx:id="textInicio" layoutX="556.0" layoutY="361.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="30.0" />
+      <Button fx:id="textMateria" layoutX="255.0" layoutY="249.0" mnemonicParsing="false" onAction="#pulsarBotonMateria" prefHeight="41.0" prefWidth="97.0" text="Materias" />
    </children>
 </AnchorPane>

@@ -20,20 +20,28 @@ public class CONTROLLEREGISTROS {
     private Button textProfesor;
     @FXML
     private Button textAlumno;
+    @FXML
+    private Button textMateria;
 
     private String profesorInterfaz = "/com/java/fx/insertarProfesor.fxml";
     private String alumnoInterfaz = "/com/java/fx/insertarAlumno.fxml";
+    private String materiaInterfaz = "/com/java/fx/insertarMateria.fxml";
 
     @FXML
     public void pulsarBotonProfesor() throws IOException, java.io.IOException {
         System.out.println("[DEBUG] Abriendo registro de Profesor");
-        cambiarEscena(profesorInterfaz, "Registro de Profesores");
+        cambiarEscena(profesorInterfaz, "Insertar Profesores");
     }
 
     @FXML
     public void pulsarBotonAlumno() throws IOException, java.io.IOException {
         System.out.println("[DEBUG] Abriendo registro de Alumno");
-        cambiarEscena(alumnoInterfaz, "Registro de Alumnos");
+        cambiarEscena(alumnoInterfaz, "Insertar Alumnos");
+    }
+    @FXML
+    public void pulsarBotonMateria() throws IOException, java.io.IOException {
+        System.out.println("[DEBUG] Abriendo registro de Materia");
+        cambiarEscena(materiaInterfaz, "Insertar Materias");
     }
 
     private void cambiarEscena(String fxmlPath, String title) throws IOException, java.io.IOException {

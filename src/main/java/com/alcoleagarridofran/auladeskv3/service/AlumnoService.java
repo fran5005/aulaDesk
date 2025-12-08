@@ -24,8 +24,6 @@ public class AlumnoService {
     final PasswordEncoder passwordEncoder;
     Alumno alumno;
 
-    // --- C R U D ---
-
     public Alumno insertarAlumno(AlumnoLoginDTO alumnoDTO) {
 
         if (usuarioRepository.findByCorreo(alumnoDTO.getCorreo()).isPresent()) {
