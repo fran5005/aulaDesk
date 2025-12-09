@@ -66,7 +66,7 @@ public class InsertarMateria implements Initializable {
             if(newValue != null) {
                 Materia materiaSeleccionada = (Materia) newValue;
                 id = materiaSeleccionada.getIdMateria();
-                item = item(); // ¡Ojo! Revisar la llamada a item() más abajo
+                item = item();
                 textID.setText(String.valueOf(item.getIdMateria()));
                 textNombre.setText(item.getNombre());
             }
@@ -123,24 +123,17 @@ public class InsertarMateria implements Initializable {
 
     private void cambiarEscena(String fxmlPath) throws IOException, java.io.IOException {
 
-        // 1. Obtener la ventana (Stage) actual y cerrarla
-        // Usamos textProfesor (o cualquier otro botón) para obtener la ventana actual
         Stage oldStage = (Stage) textHomes.getScene().getWindow();
         oldStage.close();
 
-        // 2. Crear una nueva ventana (Stage)
         Stage newStage = new Stage();
 
-        // 3. Cargar el FXML, usando el ControllerFactory de Spring
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlPath));
-        // ¡CRUCIAL! Asegura que los controladores de la nueva vista (@FXML)
-        // tengan sus dependencias de Spring inyectadas (@Autowired).
         fxmlLoader.setControllerFactory(context::getBean);
 
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root);
 
-        // 4. Mostrar la nueva ventana
         newStage.setScene(scene);
         newStage.show();
     }
