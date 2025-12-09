@@ -4,14 +4,22 @@ import com.alcoleagarridofran.auladeskv3.dto.ProfesorLoginDTO;
 import com.alcoleagarridofran.auladeskv3.model.Profesor;
 import com.alcoleagarridofran.auladeskv3.repository.IProfesorRepository;
 import com.alcoleagarridofran.auladeskv3.service.ProfesorService;
+import io.jsonwebtoken.io.IOException;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Component;
 
 import java.net.URL;
@@ -24,7 +32,8 @@ public class InsertarProfesor implements Initializable {
     public final IProfesorRepository profesorRepository;
     public final ProfesorService profesorService;
 
-
+    @Autowired
+    private ConfigurableApplicationContext context;
     private int id;
     private Profesor item;
 
@@ -46,24 +55,26 @@ public class InsertarProfesor implements Initializable {
     @FXML
     private Button textEliminar;
     @FXML
-    private Button textHomes; // Botón Home (🏠)
+     Button textHomes;
     @FXML
-    private Button textBacks; // Botón Atrás (⏪)
+     Button textBacks;
 
     @FXML
     ListView<Profesor> listado;
+
+    private String back = "/com/java/fx/registros.fxml";
+    private String home = "/com/java/fx/main.fxml";
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         System.out.println("[DEBUG] Iniciando insercion de profesores.....");
 
-        // 1. Conexión de Eventos (Si usas setOnAction)
+
         textGuardar.setOnAction(event -> insertarProfesor());
         textModificar.setOnAction(event -> actualizarProfesor());
         textEliminar.setOnAction(event -> eliminarProfesor());
 
-            // 2. Llamada a la lista
             list();
 
         listado.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
@@ -87,7 +98,7 @@ public class InsertarProfesor implements Initializable {
 
     public void list() {
 
-        listado.setItems(FXCollections.observableArrayList(profesorRepository.findAll()));
+        listado.setItems(FXCollections.observableArrayList(profesorService.obtenerProfesores()));
 
     }
 
@@ -145,5 +156,31 @@ public class InsertarProfesor implements Initializable {
         textApellido.clear();
         textCorreo.clear();
         textContrasena.clear();
+    }
+
+    public void back()throws IOException, java.io.IOException{
+        System.out.println("[DEBUG] Volviendo atras");
+        cambiarEscena(back);
+    }
+
+    public void home()throws IOException, java.io.IOException{
+        System.out.println("[DEBUG] Volviendo a home");
+        cambiarEscena(home);
+    }
+    private void cambiarEscena(String fxmlPath) throws IOException, java.io.IOException {
+
+
+        Stage oldStage = (Stage) textHomes.getScene().getWindow();
+        oldStage.close();
+
+        Stage newStage = new Stage();
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlPath));
+        fxmlLoader.setControllerFactory(context::getBean);
+
+        Parent root = fxmlLoader.load();
+        Scene scene = new Scene(root);
+        newStage.setScene(scene);
+        newStage.show();
     }
 }

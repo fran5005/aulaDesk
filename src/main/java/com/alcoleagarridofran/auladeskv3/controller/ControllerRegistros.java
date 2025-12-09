@@ -12,7 +12,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CONTROLLEREGISTROS {
+public class ControllerRegistros {
     @Autowired
     private ConfigurableApplicationContext context;
 
@@ -46,24 +46,16 @@ public class CONTROLLEREGISTROS {
 
     private void cambiarEscena(String fxmlPath, String title) throws IOException, java.io.IOException {
 
-        // 1. Obtener la ventana (Stage) actual y cerrarla
-        // Usamos textProfesor (o cualquier otro botón) para obtener la ventana actual
         Stage oldStage = (Stage) textProfesor.getScene().getWindow();
         oldStage.close();
 
-        // 2. Crear una nueva ventana (Stage)
         Stage newStage = new Stage();
-
-        // 3. Cargar el FXML, usando el ControllerFactory de Spring
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlPath));
-        // ¡CRUCIAL! Asegura que los controladores de la nueva vista (@FXML)
-        // tengan sus dependencias de Spring inyectadas (@Autowired).
         fxmlLoader.setControllerFactory(context::getBean);
 
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root);
 
-        // 4. Mostrar la nueva ventana
         newStage.setScene(scene);
         newStage.setTitle(title);
         newStage.show();

@@ -11,5 +11,4 @@ public class AulaDeskV3Application {
         Application.launch(JavaFX.class);
         System.out.println("[DEBUG] Aplicacion iniciada");
     }
-
 }

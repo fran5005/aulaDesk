@@ -46,7 +46,6 @@ public class Profesor implements Serializable {
         this.nombre = nombre;
         this.apellidos = apellidos;
     }
-
     public Integer getIdProfesor() {
         return idProfesor;
     }

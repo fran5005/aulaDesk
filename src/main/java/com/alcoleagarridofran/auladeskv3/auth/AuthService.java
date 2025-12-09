@@ -22,11 +22,15 @@ public class AuthService {
     private final AuthenticationManager authenticationManager;
 
     public AuthResponse login(LoginRequest loginRequest) {
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getCorreo(),loginRequest.getContrasenya()));
-        UserDetails user = usuarioRepository.findByCorreo(loginRequest.getCorreo()).orElseThrow();
-        String token = jwtService.getToken(user);
 
-        return AuthResponse.builder().token(token).build();
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getCorreo(),loginRequest.getContrasenya()));
+        Usuario user = (Usuario) usuarioRepository.findByCorreo(loginRequest.getCorreo()).orElseThrow();
+
+        String token = jwtService.getToken(user);
+        return AuthResponse.builder()
+                .token(token)
+                .rol(user.getRol().toString())
+                .build();
     }
 
     public AuthResponse register(RegisterRequest registerRequest) {
@@ -41,8 +45,6 @@ public class AuthService {
     }
     @Transactional
     public void eliminar(int idUsuario) {
-
-        // 2. Ejecutar la eliminación
         usuarioRepository.deleteByIdUsuario(idUsuario);
     }
 }

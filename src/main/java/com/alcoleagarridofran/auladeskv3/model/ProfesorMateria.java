@@ -95,6 +95,4 @@ public class ProfesorMateria implements Serializable {
     public String toString() {
         return "com.mycompany.mavenproject4.asdasd.ProfesorMateria[ profesorMateriaPK=" + profesorMateriaPK + " ]";
     }
-
 }
-

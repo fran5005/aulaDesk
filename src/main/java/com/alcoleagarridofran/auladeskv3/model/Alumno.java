@@ -120,6 +120,5 @@ public class Alumno implements Serializable {
     public String toString() {
         return "DATOS ALUMNO: NRE: " + nre + " NOMBRE: " + nombre + " APELLIDOS: " + apellidos + " FECHA NACIMIENTO: " + fechaNacimiento;
     }
-
 }
 

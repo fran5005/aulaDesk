@@ -127,6 +127,5 @@ public class Matricula implements Serializable {
     public String toString() {
         return "com.mycompany.mavenproject4.asdasd.Matricula[ idMatricula=" + idMatricula + " ]";
     }
-
 }
 

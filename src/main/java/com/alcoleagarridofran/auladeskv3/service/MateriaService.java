@@ -19,7 +19,6 @@ public class MateriaService {
     public Materia actualizarMateria(Materia materia) {
         return materiaRepository.save(materia);
     }
-
     public void eliminarMateria(Integer id) {
         materiaRepository.deleteById(id);
     }

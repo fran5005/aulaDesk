@@ -1,6 +1,5 @@
 package com.alcoleagarridofran.auladeskv3;
 
-import com.alcoleagarridofran.auladeskv3.controller.CONTROLLER;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -11,7 +10,6 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 public class JavaFX extends Application{
     private ConfigurableApplicationContext context;
-
 
     @Override
     public void init() throws Exception {

@@ -3,7 +3,6 @@ package com.alcoleagarridofran.auladeskv3.model;
 import java.io.Serializable;
 import java.util.List;
 import jakarta.persistence.*;
-
 /**
  *
  * @author franc

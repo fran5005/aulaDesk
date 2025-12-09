@@ -14,7 +14,7 @@ public class AlumnoLoginDTO {
     private String nombre;
     private String apellidos;
     private Date fechaNacimiento;
-
+    
     private String correo;
     private String contrasenya;
 }

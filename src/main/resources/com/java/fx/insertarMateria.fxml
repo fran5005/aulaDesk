@@ -39,8 +39,8 @@
                   <Image url="@../../../images/logoAulaDesk.png" />
                </image>
             </ImageView>
-            <Button fx:id="textHomes" layoutX="416.0" layoutY="501.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="29.0" text="🏠" />
-            <Button fx:id="textBacks" layoutX="769.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="29.0" text="⏪" />
+            <Button fx:id="textHomes" onAction="#home" layoutX="416.0" layoutY="501.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="29.0" text="🏠" />
+            <Button fx:id="textBacks" onAction="#back" layoutX="769.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="29.0" text="⏪" />
             <Button fx:id="textModificar" onAction="#actualizarMateria" layoutX="569.0" layoutY="425.0" mnemonicParsing="false"  prefHeight="36.0" prefWidth="91.0" style="-fx-background-color: cyan; -fx-text-fill: black; -fx-font-weight: bold; -fx-effect: dropshadow;" text="Modificar" />
             <Button fx:id="textEliminar" layoutX="702.0" layoutY="425.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="82.0" style="-fx-background-color: cyan; -fx-text-fill: black; -fx-font-weight: bold; -fx-effect: dropshadow;" text="Eliminar" />
             <ListView fx:id="listado" layoutX="387.0" layoutY="68.0" prefHeight="351.0" prefWidth="413.0" />

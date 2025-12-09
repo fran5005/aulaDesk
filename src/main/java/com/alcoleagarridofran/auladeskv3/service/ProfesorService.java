@@ -1,6 +1,5 @@
 package com.alcoleagarridofran.auladeskv3.service;
 
-import com.alcoleagarridofran.auladeskv3.dto.ProfesorDatosDTO;
 import com.alcoleagarridofran.auladeskv3.dto.ProfesorLoginDTO;
 import com.alcoleagarridofran.auladeskv3.model.Profesor;
 import com.alcoleagarridofran.auladeskv3.model.Usuario;
@@ -23,8 +22,6 @@ public class ProfesorService {
     final IUsuarioRepository usuarioRepository;
     final PasswordEncoder passwordEncoder;
 
-
-
     public Profesor insertarProfesor(ProfesorLoginDTO profesorDTO) {
 
         if (usuarioRepository.findByCorreo(profesorDTO.getCorreo()).isPresent()) {
@@ -40,27 +37,19 @@ public class ProfesorService {
                 .rol(Rol.PROFESOR)
                 .build();
 
-        Usuario usuarioFinal = usuarioRepository.save(user); // 💡 Aquí usuarioGuardado ya tiene su ID
+        Usuario usuario = usuarioRepository.save(user);
 
         Profesor profesor = new Profesor();
         profesor.setIdProfesor(profesorDTO.getIdProfesor());
         profesor.setNombre(profesorDTO.getNombre());
         profesor.setApellidos(profesorDTO.getApellidos());
 
-        // 🔑 VÍNCULO FINAL: Asignamos el objeto Usuario
-        profesor.setUsuario(usuarioFinal);
+        profesor.setUsuario(usuario);
         return profesorRepository.save(profesor);
     }
 
     public List<Profesor> obtenerProfesores() {
-        // 💡 Spring Data JPA ya proporciona el método findAll() en la interfaz Repository
-        // que extiende a JpaRepository.
         return profesorRepository.findAll();
-    }
-
-    public Profesor findById(Integer id) {
-        // 💡 Usa orElseThrow para lanzar una excepción si no se encuentra
-        return profesorRepository.findById(id).get();
     }
 
     public Profesor actualizarProfesor(Profesor profesor) {

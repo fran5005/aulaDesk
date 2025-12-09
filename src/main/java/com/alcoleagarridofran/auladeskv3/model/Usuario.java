@@ -93,7 +93,7 @@ public class Usuario implements Serializable, UserDetails {
 
     @Override
     public String toString() {
-        return "com.mycompany.mavenproject4.asdasd.Usuario[ correo=" + correo + " ]";
+        return "Datos Usuario: correo" + correo ;
     }
 
 }

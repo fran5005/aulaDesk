@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.alcoleagarridofran.auladeskv3.controller.CONTROLLEREGISTROS">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.alcoleagarridofran.auladeskv3.controller.ControllerRegistros">
    <children>
       <ImageView fitHeight="373.0" fitWidth="397.0" layoutX="111.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -21,7 +21,6 @@
             <Font name="Constantia" size="32.0" />
          </font>
       </Label>
-      <Button fx:id="textInicio" layoutX="556.0" layoutY="361.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="30.0" />
       <Button fx:id="textMateria" layoutX="255.0" layoutY="249.0" mnemonicParsing="false" onAction="#pulsarBotonMateria" prefHeight="41.0" prefWidth="97.0" text="Materias" />
    </children>
 </AnchorPane>

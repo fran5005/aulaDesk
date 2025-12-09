@@ -4,11 +4,18 @@ import com.alcoleagarridofran.auladeskv3.dto.AlumnoLoginDTO;
 import com.alcoleagarridofran.auladeskv3.model.Alumno;
 import com.alcoleagarridofran.auladeskv3.repository.IAlumnoRepository;
 import com.alcoleagarridofran.auladeskv3.service.AlumnoService;
+import io.jsonwebtoken.io.IOException;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 
@@ -25,7 +32,8 @@ public class InsertarAlumno implements Initializable {
     public final IAlumnoRepository alumnoRepository;
     public final AlumnoService alumnoService;
 
-    // 🔑 Estado del Controlador
+    @Autowired
+    private ConfigurableApplicationContext context;
     private Alumno item;
     private int nre;
 
@@ -50,12 +58,15 @@ public class InsertarAlumno implements Initializable {
     @FXML
     private Button textDelete;
     @FXML
-    private Button textHome;
+    Button textHome;
     @FXML
-    private Button textBack;
+     Button textBack;
 
     @FXML
     private ListView<Alumno> listado;
+
+    private String back = "/com/java/fx/registros.fxml";
+    private String home = "/com/java/fx/main.fxml";
 
 
     @Override
@@ -63,12 +74,10 @@ public class InsertarAlumno implements Initializable {
 
         System.out.println("[DEBUG] Iniciando insercion de alumnos...");
 
-        // 1. Conexión de Eventos
         textSave.setOnAction(event -> insertarAlumno());
         textReplace.setOnAction(event -> actualizarAlumno());
         textDelete.setOnAction(event -> eliminarAlumno());
 
-        // 2. Carga inicial
         list();
         listado.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
            if(newValue != null) {
@@ -83,14 +92,13 @@ public class InsertarAlumno implements Initializable {
 
     }
 
-
     public Alumno item() {
         return alumnoRepository.findById(nre).get();
     }
 
     public void list () {
 
-        listado.setItems(FXCollections.observableArrayList(alumnoRepository.findAll()));
+        listado.setItems(FXCollections.observableArrayList(alumnoService.obtenerAlumnos()));
     }
     @FXML
     public void insertarAlumno() {
@@ -106,7 +114,6 @@ public class InsertarAlumno implements Initializable {
         }
 
         alumno.setCorreo(textCorreo.getText().trim());
-        // 🔑 Usar getText() del PasswordField
         alumno.setContrasenya(textContrasena.getText());
 
         alumnoService.insertarAlumno(alumno);
@@ -138,6 +145,33 @@ public class InsertarAlumno implements Initializable {
         textCorreo.clear();
         textContrasena.clear();
         textDate.setValue(null);
+    }
+
+    public void back()throws IOException, java.io.IOException{
+        System.out.println("[DEBUG] Volviendo atras");
+        cambiarEscena(back);
+    }
+
+    public void home()throws IOException, java.io.IOException{
+        System.out.println("[DEBUG] Volviendo a home");
+        cambiarEscena(home);
+    }
+    private void cambiarEscena(String fxmlPath) throws IOException, java.io.IOException {
+
+        Stage oldStage = (Stage) textHome.getScene().getWindow();
+        oldStage.close();
+
+        Stage newStage = new Stage();
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlPath));
+
+        fxmlLoader.setControllerFactory(context::getBean);
+
+        Parent root = fxmlLoader.load();
+        Scene scene = new Scene(root);
+
+        newStage.setScene(scene);
+        newStage.show();
     }
 
 }

@@ -43,8 +43,8 @@
                </font>
             </Label>
             <Button fx:id="textSave" onAction="#insertarAlumno" layoutX="430.0" layoutY="420.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="82.0" style="-fx-background-color: #ffa420; -fx-text-fill: white; -fx-font-weight: bold; -fx-effect: dropshad;" text="Guardar" />
-            <Button fx:id="textHome" layoutX="375.0" layoutY="455.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="29.0" text="🏠" />
-            <Button fx:id="textBack" layoutX="735.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="29.0" text="⏪" />
+            <Button fx:id="textHome" onAction="#home" layoutX="375.0" layoutY="455.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="29.0" text="🏠" />
+            <Button fx:id="textBack" onAction="#back" layoutX="735.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="29.0" text="⏪" />
             <ImageView fitHeight="113.0" fitWidth="115.0" layoutY="381.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../images/logoAulaDesk.png" />

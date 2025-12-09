@@ -11,6 +11,7 @@ public class ProfesorLoginDTO {
     private Integer idProfesor;
     private String nombre;
     private String apellidos;
+
     private String correo;
     private String contrasenya;
 }
