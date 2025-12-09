@@ -107,16 +107,13 @@ public class InsertarProfesor implements Initializable {
 
         ProfesorLoginDTO profesor = new ProfesorLoginDTO();
 
-        // Asignar datos del Profesor (que no son autogenerados)
         profesor.setIdProfesor(Integer.parseInt(textID.getText().trim()));
         profesor.setNombre(textNombre.getText().trim());
         profesor.setApellidos(textApellido.getText().trim());
 
-        // Asignar credenciales de Usuario (para crear la cuenta de login)
         profesor.setCorreo(textCorreo.getText().trim());
-        profesor.setContrasenya(textContrasena.getText()); // getText() en PasswordField
+        profesor.setContrasenya(textContrasena.getText());
 
-        // 3. Llamar al servicio para la lógica de negocio (crea Usuario, obtiene ID y crea Profesor)
         profesorService.insertarProfesor(profesor);
         list();
         limpiarCampos();
@@ -125,20 +122,16 @@ public class InsertarProfesor implements Initializable {
     @FXML
     public void actualizarProfesor() {
         try {
-            // 2. Actualizar el objeto 'item' con los nuevos datos de los campos de texto
-            // EL ID (this.item.getIdProfesor()) ya está en el objeto y no se toca.
 
             item.setNombre(textNombre.getText());
             item.setApellidos(textApellido.getText());
 
-            // 3. Llamar al servicio para guardar los cambios en la base de datos
-            // Usamos el servicio inyectado
             profesorService.actualizarProfesor(item);
             list();
             limpiarCampos();
 
         } catch (Exception e) {
-            System.err.println("Error durante la actualización: " + e.getMessage());
+            System.err.println("[DEBUG] Profesor no actualizado: " + e.getMessage());
             e.printStackTrace();
 
         }

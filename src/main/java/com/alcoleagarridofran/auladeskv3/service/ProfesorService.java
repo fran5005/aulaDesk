@@ -25,10 +25,10 @@ public class ProfesorService {
     public Profesor insertarProfesor(ProfesorLoginDTO profesorDTO) {
 
         if (usuarioRepository.findByCorreo(profesorDTO.getCorreo()).isPresent()) {
-            throw new RuntimeException("El correo ya está registrado.");
+            throw new RuntimeException("[DEBUG] El correo ya está registrado.");
         }
         if (profesorRepository.existsById(profesorDTO.getIdProfesor())) {
-            throw new RuntimeException("El ID de Profesor ya existe.");
+            throw new RuntimeException("[DEBUG] El ID de Profesor ya existe.");
         }
 
         Usuario user = Usuario.builder()

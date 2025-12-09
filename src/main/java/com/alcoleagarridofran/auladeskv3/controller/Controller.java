@@ -73,7 +73,7 @@ public class Controller {
             }
         } catch (Exception e) {
 
-            System.err.println("[DEBUG] Error de Login: Credenciales inválidas o error de servicio.");
+            System.err.println("[DEBUG] Error de Login: Credenciales incorrectas");
 
             e.printStackTrace();
         }
